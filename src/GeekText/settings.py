@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Custom
+    'profiles',
+    'authors',
+    'books',
+    'cart',
+    'ratings',
+    'wishlist',
 
 ]
 
