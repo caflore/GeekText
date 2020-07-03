@@ -32,9 +32,9 @@ class User(AbstractBaseUser):
     
     username    = models.CharField(max_length = 30, unique = True)
     email       = models.EmailField(verbose_name = 'email', max_length = 60, unique = True, blank = True)
-    address     = models.CharField("Address line 1", max_length = 1024)
     first_name  = models.CharField(max_length = 30)
     last_name   = models.CharField(max_length = 30)
+    address     = models.CharField("Address line 1", max_length = 1024)
     zip_code    = models.CharField("Zip/Postal Code", max_length = 5)
     city        = models.CharField("City", max_length = 1024)
     country     = models.CharField("Country", max_length = 100)
@@ -58,3 +58,8 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+class CreditCard(models.Model):
+    
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    creditcard_number = models.CharField(max_length = 16)
