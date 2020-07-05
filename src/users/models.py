@@ -3,22 +3,38 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class UserManager(BaseUserManager):
     
-    def create_user(self, username, password = None):
+    def create_user(self, username, email, first_name, last_name, address, zip_code, city, country, password = None):
         if not username:
             raise ValueError("Users must have a username.")
+        if not email:
+            email = None
 
         user = self.model(
             username = username,
+            email = self.normalize_email(email),
+            first_name = first_name,
+            last_name = last_name,
+            address = address,
+            zip_code = zip_code,
+            city = city,
+            country = country,
         )
 
         user.set_password(password)
         user.save(using = self._db)
         return user
     
-    def create_superuser(self, username, password):
+    def create_superuser(self, username, email, first_name, last_name, address, zip_code, city, country, password):
         user = self.create_user(
             username = username,
             password = password,
+            email = self.normalize_email(email),
+            first_name = first_name,
+            last_name = last_name,
+            address = address,
+            zip_code = zip_code,
+            city = city,
+            country = country,
         )
 
         user.is_admin = True
@@ -31,13 +47,13 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     
     username    = models.CharField(max_length = 30, unique = True)
-    email       = models.EmailField(verbose_name = 'email', max_length = 60, unique = True, blank = True)
-    first_name  = models.CharField(max_length = 30)
-    last_name   = models.CharField(max_length = 30)
-    address     = models.CharField("Address line 1", max_length = 1024)
-    zip_code    = models.CharField("Zip/Postal Code", max_length = 5)
-    city        = models.CharField("City", max_length = 1024)
-    country     = models.CharField("Country", max_length = 100)
+    email       = models.EmailField(verbose_name = 'email', max_length = 60, unique = True, blank = True, null=True)
+    first_name  = models.CharField(max_length = 30, blank = True, null=True)
+    last_name   = models.CharField(max_length = 30, blank = True, null=True)
+    address     = models.CharField("Address line 1", max_length = 1024, blank = True, null=True)
+    zip_code    = models.CharField("Zip/Postal Code", max_length = 5, blank = True, null=True)
+    city        = models.CharField("City", max_length = 1024, blank = True, null=True)
+    country     = models.CharField("Country", max_length = 100, blank = True, null=True)
     date_joined = models.DateTimeField(verbose_name = 'date joined', auto_now_add = True)
     last_login  = models.DateTimeField(verbose_name = 'last login', auto_now = True)
     is_admin    = models.BooleanField(default = False)
@@ -46,7 +62,7 @@ class User(AbstractBaseUser):
     is_superuser= models.BooleanField(default = False)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'address', 'zip_code', 'city', 'country']
 
     objects = UserManager()
 
@@ -63,3 +79,6 @@ class CreditCard(models.Model):
     
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     creditcard_number = models.CharField(max_length = 16)
+
+    def __str__(self):
+        return self.user + ', ' + self.creditcard_number
