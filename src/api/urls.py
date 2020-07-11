@@ -5,6 +5,8 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'creditcards', views.CreditCardViewSet)
+router.register(r'books', views.BookViewSet)
+router.register(r'author', views.AuthorViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
