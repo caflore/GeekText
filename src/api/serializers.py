@@ -8,23 +8,23 @@ from books.models import Book, Author
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'password', 'email', 'first_name', 'last_name', 'address', 'zip_code', 'city', 'country',)
+        fields = '__all__'
     validate_password = make_password
 
 
 class CreditCardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CreditCard
-        fields = ('url', 'user', 'creditcard_number',)
+        fields = '__all__'
 
 
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Book
-        fields=('title', 'book_ISBN', 'price', 'genre', 'yearPublished', 'copiesSold', 'publisher', 'author', 'description',)
+        fields='__all__'
 
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Author
-        fields=('fName', 'lName', 'biography', 'publisher',)
+        fields='__all__'

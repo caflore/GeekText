@@ -10,6 +10,7 @@ class Author(models.Model):
     def __str__(self):
         return self.fName + ' ' + self.lName
 
+
 class Book(models.Model):
     title = models.CharField(max_length=120)
     book_ISBN = models.CharField(max_length=20, unique=True, null=False)
