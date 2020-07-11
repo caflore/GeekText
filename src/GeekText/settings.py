@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Custom
     'users',
     'api',
+    'books',
 ]
 
 MIDDLEWARE = [
