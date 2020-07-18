@@ -4,6 +4,8 @@ from django.contrib.auth.hashers import make_password
 from users.models import User, CreditCard
 from books.models import Book, Author
 
+from ratings.models import Rating
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -27,4 +29,9 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Author
+        fields='__all__'
+
+class RatingSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Rating
         fields='__all__'

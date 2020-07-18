@@ -3,6 +3,8 @@ from rest_framework import viewsets, filters
 from users.models import User, CreditCard
 from . import serializers
 from books.models import Book, Author
+from ratings.models import Rating
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -21,3 +23,7 @@ class BookViewSet(viewsets.ModelViewSet):
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = serializers.AuthorSerializer
+
+class RatingViewSet(viewsets.ModelViewSet):
+        queryset = Rating.objects.all()
+        serializer_class = serializers.RatingSerializer
