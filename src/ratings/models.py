@@ -11,3 +11,8 @@ class Rating(models.Model):
                                                                 ### should too
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING) ### setting to do_nothing for now
     date = models.DateField()
+
+    def __str__(self):
+        return self.comment
+    def __str__(self):
+        return self.rating
