@@ -8,6 +8,8 @@ router.register(r'creditcards', views.CreditCardViewSet)
 router.register(r'books', views.BookViewSet)
 router.register(r'author', views.AuthorViewSet)
 router.register(r'rating', views.RatingViewSet)
+router.register(r'shopping_cart', views.ShoppingCartViewSet)
+router.register(r'shopping_cart_items', views.ShoppingCartItemsViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
