@@ -13,6 +13,4 @@ class Rating(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return self.comment
-    def __str__(self):
-        return self.rating
+        return "Posted by: " + self.user.username + " Book: " + self.book.title
