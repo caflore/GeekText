@@ -10,7 +10,8 @@ from cart.models import ShoppingCart, ShoppingCartItems
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        read_only_fields =('id', 'username', 'date_joined')
+        fields = ('url', 'id', 'username', 'email', 'first_name', 'last_name', 'address', 'zip_code', 'city', 'country', 'date_joined')
     validate_password = make_password
 
 
@@ -24,7 +25,6 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Book
         fields='__all__'
-
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

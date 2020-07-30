@@ -9,7 +9,7 @@ class Rating(models.Model):
     comment = models.TextField()
     book = models.ForeignKey(Book, on_delete=models.CASCADE) ### setting to cascade in case book gets deleted, rating
                                                                 ### should too
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING) ### setting to do_nothing for now
+    user = models.ForeignKey(User, on_delete=models.CASCADE) ### setting to do_nothing for now
     date = models.DateField()
 
     def __str__(self):

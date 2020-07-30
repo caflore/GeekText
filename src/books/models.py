@@ -19,7 +19,7 @@ class Book(models.Model):
     yearPublished = models.IntegerField()
     copiesSold = models.IntegerField(default=0)
     publisher = models.CharField(max_length=120)
-    author = models.ForeignKey(Author, on_delete=models.DO_NOTHING)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     description = models.TextField()
 
     def __str__(self):

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Third Party
     'rest_framework',
+    'django_filters',
 
     # Custom
     'users',
@@ -59,6 +60,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 ROOT_URLCONF = 'GeekText.urls'
 
