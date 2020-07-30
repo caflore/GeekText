@@ -22,6 +22,8 @@ class CreditCardViewSet(viewsets.ModelViewSet):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = serializers.BookSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['book_ISBN', 'author', 'title']
 
     @action(detail=False)
     def top_sellers(self, request):
