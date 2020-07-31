@@ -72,7 +72,7 @@ Markup :  - - - -
   - Get cards for user (GET)
   - http://127.0.0.1:8000/creditcards/?search=root
 
-  Markup :  ## Shopping Cart ##
+  ## Shopping Cart ##
 
   - Cart is created when user is created.
 
