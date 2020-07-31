@@ -15,11 +15,9 @@ Markup :  - - - -
 
   - https://www.youtube.com/watch?v=0fKg7e37bQE
 
-Markup :  - - - -
+# Sample Requests #
 
-Markup :  # Sample Requests #
-
-  Markup :  ## User Profile ##
+  ## User Profile ##
 
   - Get user list (GET)
   - http://127.0.0.1:8000/users/
@@ -93,7 +91,7 @@ Markup :  # Sample Requests #
   - Delete book from cart (DELETE)
   - http://127.0.0.1:8000/shopping_cart_items/3/
 
-  
+
   ```JSON
 
   ```
