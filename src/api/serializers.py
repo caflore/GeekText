@@ -10,8 +10,8 @@ from cart.models import ShoppingCart, ShoppingCartItems
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        read_only_fields =('id', 'username', 'date_joined')
-        fields = ('url', 'id', 'username', 'email', 'first_name', 'last_name', 'address', 'zip_code', 'city', 'country', 'date_joined')
+        read_only_fields =('id', 'date_joined')
+        fields = ('url', 'id', 'username', 'email', 'first_name', 'last_name', 'address', 'zip_code', 'city', 'country')
     validate_password = make_password
 
 
@@ -19,7 +19,6 @@ class CreditCardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CreditCard
         fields = '__all__'
-
 
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
