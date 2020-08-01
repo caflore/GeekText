@@ -27,4 +27,4 @@ class ShoppingCartItems(models.Model):
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.item_id.title
+        return self.cart.user.username + ": " + self.item_id.title

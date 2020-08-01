@@ -8,7 +8,6 @@ Admin:
 Using:
   - Python 3.7.5 virtualenv
 
-Markup :  - - - -
 
 # Quick git tutorials:
   - https://git-scm.com/docs/gittutorial
@@ -17,7 +16,7 @@ Markup :  - - - -
 
 # Sample Requests #
 
-  ## User Profile ##
+  ## User Profile (Carlos Flores) ##
 
   - Get user list (GET)
   - http://127.0.0.1:8000/users/
@@ -92,18 +91,69 @@ Markup :  - - - -
   - http://127.0.0.1:8000/shopping_cart_items/3/
 
 
-  ```JSON
+  ## Book Details ##
 
-  ```
-  ```JSON
+  - Add book to database (POST)
+  - http://127.0.0.1:8000/books/
 
-  ```
   ```JSON
-
+  {
+    "title": "",
+    "book_ISBN": "",
+    "price": null,
+    "genre": "",
+    "yearPublished": null,
+    "copiesSold": null,
+    "publisher": "",
+    "description": "",
+    "author": null
+  }
   ```
+  - Get book by ISBN (GET)
+  - http://127.0.0.1:8000/books/?book_ISBN=9780307743657
+
+  - Create Author (POST)
+  - http://127.0.0.1:8000/author/
+
   ```JSON
-
+  {
+    "fName": "",
+    "lName": "",
+    "biography": "",
+    "publisher": ""
+  }
   ```
+  ## Book Browsing and Sorting ##
+
+  - Retrieve List of Books by Genre (GET)
+  - http://127.0.0.1:8000/books/?genre=Fantasy
+
+  - Retrieve List of Top Sellers (Top 10 books that have sold the most copied) (GET)
+  - http://127.0.0.1:8000/books/top_sellers/
+
+  - Retrieve List of Books for a particular rating and higher (GET)
+  - http://127.0.0.1:8000/books/top_rated/?rating=1
+
+  - Retrieve List of X Books at a time where X is an integer (GET)
+  - http://127.0.0.1:8000/books/top_x/?count=2
+
+  ## Ratings and Comments ##
+    
+  - Create rating on a 5-star scale with datestamp
+    
+  - Create a comment with a datestamp
   ```JSON
-
+  {
+      "rating": 5,
+      "comment": "This is a great book",
+      "date": "2020-08-02",
+      "book": "http://127.0.0.1:8000/books/3/",
+      "user": "http://127.0.0.1:8000/users/1/"
+  }
   ```
+  
+   - Retrieve a list of ratings and comments sorted by top rated
+   - http://127.0.0.1:8000/rating/top_ratings/  
+   
+   - Retrieve average rating for a book
+   - http://127.0.0.1:8000/books/avg_book_rating/?ISBN=9780307743657

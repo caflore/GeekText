@@ -1,3 +1,4 @@
 geektext_env/
+.DS_Store
 .idea/
 venv/

@@ -5,11 +5,10 @@ from users.models import User
 
 
 class Rating(models.Model):
-    rating = models.IntegerField() ##figure out how to min max the ratings
+    rating = models.IntegerField()
     comment = models.TextField()
-    book = models.ForeignKey(Book, on_delete=models.CASCADE) ### setting to cascade in case book gets deleted, rating
-                                                                ### should too
-    user = models.ForeignKey(User, on_delete=models.CASCADE) ### setting to do_nothing for now
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
 
     def __str__(self):
